@@ -10,8 +10,18 @@ class Game{
         misses = "";
     }
 
+    public boolean isInMisses(char letter){
+        return this.misses.indexOf(letter) != -1;
+    }
+
+    public boolean isInAnswer(char letter){
+        return this.answer.indexOf(letter) != -1;
+    }
+
     public boolean applyGuess(char letter){
-        boolean isHit = answer.indexOf(letter) != -1;
+        if (isInMisses(letter) || isInAnswer(letter)) throw new IllegalArgumentException(letter + " has already been guessed");
+
+        boolean isHit = isInAnswer(letter);
         if (isHit){
             hits += letter;
         } else {
