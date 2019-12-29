@@ -34,4 +34,10 @@ class Prompter {
         System.out.printf("You have %d remaining tries to solve: %s%n", game.getRemainingTries(),
                 game.getCurrentProgress());
     }
+
+	public void displayOutcome() {
+        String answers = game.getAnswer();
+        String outcome =  game.isWon() ? "You Won!" : "You Lose! \nThe answer was: " + answers;
+        System.out.println(outcome);
+	}
 }
